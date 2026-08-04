@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Akademik — MA Nuruddien</title>
+<meta name="description" content="Kurikulum terpadu, tiga peminatan, kalender akademik, dan daftar prestasi siswa MA Nuruddien.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="lompat" href="#utama">Lompat ke konten utama</a>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <div class="wrap header__isi">
+    <a class="merek" href="index.html">
+      <svg class="merek__lambang" viewBox="0 0 48 48" aria-hidden="true">
+        <path d="M24 3 C34 12 39 20 39 28 v14 a3 3 0 0 1 -3 3 H12 a3 3 0 0 1 -3 -3 V28 C9 20 14 12 24 3 Z" fill="#1e5a4c"/>
+        <path d="M24 16 l2.6 7.4 7.4 -0.6 -4.8 5.7 3.6 6.8 -8.8 -3.6 -8.8 3.6 3.6 -6.8 -4.8 -5.7 7.4 0.6 Z" fill="#c79a31"/>
+      </svg>
+      <span>
+        <span class="merek__nama">MA Nuruddien</span>
+        <span class="merek__sub">Tanjung Jabung Barat</span>
+      </span>
+    </a>
+
+    <button class="tombol-menu" type="button" aria-expanded="false" aria-controls="nav-utama" aria-label="Buka menu navigasi">
+      <span></span>
+    </button>
+
+    <nav class="nav" id="nav-utama" aria-label="Navigasi utama">
+      <ul class="nav__daftar">
+        <li><a class="nav__tautan" href="index.html">Beranda</a></li>
+        <li><a class="nav__tautan" href="profil.html">Profil</a></li>
+        <li><a class="nav__tautan" aria-current="page" href="akademik.html">Akademik</a></li>
+        <li><a class="nav__tautan" href="fasilitas.html">Fasilitas</a></li>
+        <li><a class="nav__tautan" href="berita.html">Berita</a></li>
+        <li><a class="nav__tautan" href="kontak.html">Kontak</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="utama">
+  <section class="judul-halaman">
+    <div class="wrap judul-halaman__isi">
+      <p class="remah"><a href="index.html">Beranda</a> &nbsp;/&nbsp; Akademik</p>
+      <h1>Program Akademik</h1>
+      <p>Kurikulum, peminatan, kalender kegiatan, dan capaian siswa MA Nuruddien.</p>
+    </div>
+  </section>
+  <nav class="subnav" aria-label="Bagian halaman"><div class="wrap"><ul class="subnav__daftar"><li><a href="#kurikulum">Kurikulum</a></li><li><a href="#peminatan">Peminatan</a></li><li><a href="#kalender">Kalender akademik</a></li><li><a href="#prestasi">Prestasi</a></li></ul></div></nav>
+
+  <section class="bagian" id="kurikulum">
+    <div class="wrap duo">
+      <div class="muncul">
+        <span class="mata">Kurikulum</span>
+        <h2>Dua rumpun ilmu, satu jadwal belajar</h2>
+        <p class="utama">
+          MA Nuruddien menjalankan kurikulum nasional yang berlaku di madrasah aliyah, ditambah
+          rumpun mata pelajaran keagamaan sesuai ketentuan Kementerian Agama.
+        </p>
+        <p>
+          Kegiatan belajar berlangsung Senin sampai Sabtu. Pagi hari dibuka dengan tadarus dan
+          salat duha berjamaah, dilanjutkan jam pelajaran reguler, lalu ditutup dengan salat zuhur
+          berjamaah sebelum siswa pulang.
+        </p>
+        <div class="kisi kisi--2" style="margin-top:30px">
+          <div class="kartu kartu--nomor">
+            <span class="no">Rumpun umum</span>
+            <h3>Mata pelajaran umum</h3>
+            <p>Matematika, Bahasa Indonesia, Bahasa Inggris, Fisika, Kimia, Biologi, Ekonomi, Sosiologi, Geografi, Sejarah, PPKn, PJOK, Informatika, dan Seni Budaya.</p>
+          </div>
+          <div class="kartu kartu--nomor">
+            <span class="no">Rumpun agama</span>
+            <h3>Mata pelajaran keagamaan</h3>
+            <p>Al-Qur&rsquo;an Hadis, Akidah Akhlak, Fikih, Sejarah Kebudayaan Islam, dan Bahasa Arab, ditambah program tahfiz harian.</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="kotak-info muncul">
+        <h3>Jam belajar</h3>
+        <ul>
+          <li><strong>06.50</strong> — Tadarus &amp; salat duha</li>
+          <li><strong>07.30</strong> — Jam pelajaran ke-1</li>
+          <li><strong>09.50</strong> — Istirahat pertama</li>
+          <li><strong>12.10</strong> — Salat zuhur berjamaah</li>
+          <li><strong>12.40</strong> — Jam pelajaran akhir</li>
+          <li><strong>14.20</strong> — Ekstrakurikuler (terjadwal)</li>
+        </ul>
+        <p class="kecil abu" style="margin-top:14px">Hari Jumat jam belajar berakhir lebih awal.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="bagian bagian--sage" id="peminatan">
+    <div class="wrap">
+      <div class="kepala-bagian muncul">
+        <span class="mata">Peminatan</span>
+        <h2>Tiga jalur yang bisa dipilih siswa</h2>
+        <p class="utama">Pemilihan peminatan dilakukan di awal kelas X setelah wawancara bersama wali kelas.</p>
+      </div>
+
+      <div class="kisi kisi--3">
+        <article class="kartu muncul">
+          <div class="kartu__ikon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v6.5L5 19a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 19l-5-9.5V3"/><path d="M7.5 15h9"/></svg>
+          </div>
+          <h3>MIA</h3>
+          <p class="kecil abu" style="margin-bottom:8px">Matematika &amp; Ilmu Alam</p>
+          <p>Untuk siswa yang ingin melanjutkan ke bidang sains, kesehatan, teknik, atau pendidikan MIPA. Pendalaman pada Matematika, Fisika, Kimia, dan Biologi.</p>
+        </article>
+
+        <article class="kartu muncul">
+          <div class="kartu__ikon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18M6 20V9M12 20V4M18 20v-7"/></svg>
+          </div>
+          <h3>IIS</h3>
+          <p class="kecil abu" style="margin-bottom:8px">Ilmu-ilmu Sosial</p>
+          <p>Untuk siswa yang tertarik pada ekonomi, hukum, komunikasi, atau pemerintahan. Pendalaman pada Ekonomi, Sosiologi, Geografi, dan Sejarah.</p>
+        </article>
+
+        <article class="kartu muncul">
+          <div class="kartu__ikon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M12 6v7M9 9.5h6"/></svg>
+          </div>
+          <h3>Keagamaan</h3>
+          <p class="kecil abu" style="margin-bottom:8px">Ilmu-ilmu Keagamaan</p>
+          <p>Untuk siswa yang ingin mendalami studi Islam dan melanjutkan ke perguruan tinggi keagamaan. Pendalaman pada Tafsir, Hadis, Fikih, Ushul Fikih, dan Bahasa Arab.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="bagian" id="kalender">
+    <div class="wrap">
+      <div class="kepala-bagian muncul">
+        <span class="mata">Kalender akademik</span>
+        <h2>Agenda tahun ajaran 2025/2026</h2>
+        <p class="utama">Jadwal dapat berubah menyesuaikan kalender pendidikan daerah dan Kementerian Agama.</p>
+      </div>
+
+      <div class="tabel-bungkus muncul">
+        <table class="data">
+          <caption class="kecil abu" style="caption-side:bottom;text-align:left;padding:14px 20px">Diperbarui setiap awal semester oleh bagian kurikulum.</caption>
+          <thead>
+            <tr><th scope="col">Waktu</th><th scope="col">Kegiatan</th><th scope="col">Keterangan</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Juli 2025</td><td>Awal tahun ajaran &amp; masa taaruf siswa</td><td>Pengenalan lingkungan madrasah</td></tr>
+            <tr><td>September 2025</td><td>Penilaian tengah semester ganjil</td><td>Seluruh tingkat</td></tr>
+            <tr><td>Desember 2025</td><td>Penilaian akhir semester ganjil</td><td>Dilanjutkan pembagian rapor</td></tr>
+            <tr><td>Maret 2026</td><td>Pesantren kilat Ramadan</td><td>Kelas X dan XI</td></tr>
+            <tr><td>April 2026</td><td>Ujian madrasah kelas XII</td><td>Tertulis dan praktik</td></tr>
+            <tr><td>Mei 2026</td><td>Penilaian akhir semester genap</td><td>Kelas X dan XI</td></tr>
+            <tr><td>Juni 2026</td><td>Wisuda &amp; pelepasan kelas XII</td><td>Bersama wali murid</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="bagian bagian--sage" id="prestasi">
+    <div class="wrap duo">
+      <div class="muncul">
+        <span class="mata">Prestasi</span>
+        <h2>Capaian siswa dalam tiga tahun terakhir</h2>
+        <p class="utama">
+          Sebagian besar diraih pada ajang tingkat kabupaten. Kami mencantumkannya apa adanya,
+          termasuk yang belum sampai juara pertama.
+        </p>
+      </div>
+
+      <ul class="prestasi muncul">
+        <li>
+          <span class="medali">Juara 1</span>
+          <span><strong>Lomba Kaligrafi Islam</strong><span>Pekan Seni Madrasah tingkat kabupaten</span></span>
+          <span class="thn">2025</span>
+        </li>
+        <li>
+          <span class="medali medali--perak">Juara 2</span>
+          <span><strong>MTQ cabang hifzil Qur&rsquo;an 5 juz</strong><span>Tingkat Kabupaten Tanjung Jabung Barat</span></span>
+          <span class="thn">2026</span>
+        </li>
+        <li>
+          <span class="medali medali--perak">Juara 2</span>
+          <span><strong>Kompetisi Sains Madrasah bidang Biologi</strong><span>Seleksi tingkat kabupaten</span></span>
+          <span class="thn">2024</span>
+        </li>
+        <li>
+          <span class="medali medali--perunggu">Juara 3</span>
+          <span><strong>Lomba Tingkat Regu Pramuka Penegak</strong><span>Kwartir Cabang Tanjung Jabung Barat</span></span>
+          <span class="thn">2025</span>
+        </li>
+        <li>
+          <span class="medali">Juara 1</span>
+          <span><strong>Turnamen Futsal Antar Madrasah</strong><span>Piala Kemenag kabupaten</span></span>
+          <span class="thn">2024</span>
+        </li>
+        <li>
+          <span class="medali medali--perunggu">Juara 3</span>
+          <span><strong>Lomba Pidato Bahasa Arab</strong><span>Pekan Seni Madrasah tingkat kabupaten</span></span>
+          <span class="thn">2023</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__kisi">
+      <div class="footer__merek">
+        <a class="merek" href="index.html">
+          <svg class="merek__lambang" viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M24 3 C34 12 39 20 39 28 v14 a3 3 0 0 1 -3 3 H12 a3 3 0 0 1 -3 -3 V28 C9 20 14 12 24 3 Z" fill="#2a6b5b"/>
+            <path d="M24 16 l2.6 7.4 7.4 -0.6 -4.8 5.7 3.6 6.8 -8.8 -3.6 -8.8 3.6 3.6 -6.8 -4.8 -5.7 7.4 0.6 Z" fill="#c79a31"/>
+          </svg>
+          <span>
+            <span class="merek__nama">MA Nuruddien</span>
+            <span class="merek__sub">Tanjung Jabung Barat</span>
+          </span>
+        </a>
+        <p>Madrasah Aliyah swasta di Kuala Tungkal, Provinsi Jambi. Membina siswa dengan ilmu umum dan ilmu agama sejak 2003.</p>
+        <div class="sosial">
+          <a href="#" aria-label="Facebook MA Nuruddien"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.5-1.5h1.7V4c-.3 0-1.3-.1-2.4-.1-2.4 0-4.1 1.5-4.1 4.2V10H7.5v3h2.7v8z"/></svg></a>
+          <a href="#" aria-label="Instagram MA Nuruddien"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="YouTube MA Nuruddien"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 7.2c-.2-.9-.9-1.6-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4c-.9.2-1.6.9-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.8c.2.9.9 1.6 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8ZM10 15V9l5.2 3z"/></svg></a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Halaman</h4>
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="profil.html">Profil</a></li>
+          <li><a href="akademik.html">Akademik</a></li>
+          <li><a href="fasilitas.html">Fasilitas</a></li>
+          <li><a href="berita.html">Berita</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Tentang</h4>
+        <ul>
+          <li><a href="profil.html#sejarah">Sejarah</a></li>
+          <li><a href="profil.html#visi-misi">Visi &amp; misi</a></li>
+          <li><a href="profil.html#struktur">Struktur organisasi</a></li>
+          <li><a href="akademik.html#prestasi">Prestasi</a></li>
+          <li><a href="fasilitas.html#ekskul">Ekstrakurikuler</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Alamat</h4>
+        <ul>
+          <li>Jl. Pendidikan No. 12, Kuala Tungkal<br>Kabupaten Tanjung Jabung Barat<br>Provinsi Jambi 36513</li>
+          <li><a href="tel:+62741000000">(0742) 000 000</a></li>
+          <li><a href="mailto:info@manuruddien.sch.id">info@manuruddien.sch.id</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bawah">
+      <span>&copy; <span data-tahun>2026</span> Madrasah Aliyah Nuruddien, Tanjung Jabung Barat, Jambi.</span>
+      <span>Dirancang sebagai media promosi digital madrasah.</span>
+    </div>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>

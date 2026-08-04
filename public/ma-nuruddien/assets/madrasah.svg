@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 780" width="600" height="780" role="img" aria-label="Ilustrasi gedung Madrasah Aliyah Nuruddien">
+  <defs>
+    <linearGradient id="langit" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F3F7F1"/>
+      <stop offset="1" stop-color="#DCE5DB"/>
+    </linearGradient>
+    <clipPath id="bingkai">
+      <rect x="0" y="0" width="600" height="780"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#bingkai)">
+    <rect width="600" height="780" fill="url(#langit)"/>
+
+    <!-- matahari -->
+    <circle cx="466" cy="176" r="74" fill="#C79A31" opacity="0.16"/>
+    <circle cx="466" cy="176" r="46" fill="#C79A31" opacity="0.28"/>
+
+    <!-- bukit jauh -->
+    <path d="M0 470 Q120 424 250 462 Q380 500 470 456 Q540 424 600 448 L600 780 L0 780 Z" fill="#CBD9C8"/>
+
+    <!-- pohon kelapa kiri -->
+    <path d="M78 620 C74 556 82 508 96 466" stroke="#3E5B45" stroke-width="9" fill="none" stroke-linecap="round"/>
+    <g fill="#2C4A38">
+      <path d="M96 466 C68 442 40 442 22 460 C48 458 74 464 96 476 Z"/>
+      <path d="M96 466 C120 434 154 428 176 442 C148 444 118 456 100 478 Z"/>
+      <path d="M96 466 C82 430 62 408 38 402 C58 424 74 448 88 478 Z"/>
+      <path d="M96 466 C114 434 138 414 162 410 C142 430 122 452 106 480 Z"/>
+    </g>
+
+    <!-- pohon kelapa kanan -->
+    <path d="M534 636 C532 570 524 522 510 482" stroke="#3E5B45" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <g fill="#2C4A38">
+      <path d="M510 482 C536 458 566 456 584 472 C558 470 532 478 510 490 Z"/>
+      <path d="M510 482 C486 452 456 446 434 458 C462 460 490 472 506 492 Z"/>
+      <path d="M510 482 C522 448 540 428 562 420 C544 442 528 464 516 492 Z"/>
+    </g>
+
+    <!-- halaman -->
+    <rect y="628" width="600" height="152" fill="#B9CBB6"/>
+    <path d="M242 780 L268 628 L336 628 L370 780 Z" fill="#E4EAE1"/>
+
+    <!-- bangunan utama -->
+    <rect x="132" y="404" width="340" height="228" rx="6" fill="#FBF7EC"/>
+    <rect x="132" y="404" width="340" height="20" fill="#1E5A4C"/>
+    <rect x="132" y="612" width="340" height="20" fill="#DCE5DB"/>
+
+    <!-- menara kiri -->
+    <rect x="106" y="330" width="42" height="302" rx="5" fill="#FBF7EC"/>
+    <rect x="100" y="330" width="54" height="16" rx="4" fill="#1E5A4C"/>
+    <path d="M127 274 C144 296 152 312 152 326 L102 326 C102 312 110 296 127 274 Z" fill="#1E5A4C"/>
+    <rect x="124" y="258" width="6" height="22" rx="3" fill="#C79A31"/>
+    <circle cx="127" cy="254" r="7" fill="#C79A31"/>
+    <rect x="118" y="372" width="18" height="42" rx="9" fill="#143F35" opacity="0.75"/>
+
+    <!-- menara kanan -->
+    <rect x="456" y="330" width="42" height="302" rx="5" fill="#FBF7EC"/>
+    <rect x="450" y="330" width="54" height="16" rx="4" fill="#1E5A4C"/>
+    <path d="M477 274 C494 296 502 312 502 326 L452 326 C452 312 460 296 477 274 Z" fill="#1E5A4C"/>
+    <rect x="474" y="258" width="6" height="22" rx="3" fill="#C79A31"/>
+    <circle cx="477" cy="254" r="7" fill="#C79A31"/>
+    <rect x="468" y="372" width="18" height="42" rx="9" fill="#143F35" opacity="0.75"/>
+
+    <!-- kubah -->
+    <path d="M302 208 C368 258 398 306 398 348 C398 372 358 388 302 388 C246 388 206 372 206 348 C206 306 236 258 302 208 Z" fill="#1E5A4C"/>
+    <path d="M302 208 C336 234 360 264 372 294 C346 268 322 244 302 226 Z" fill="#2A6B5B" opacity="0.9"/>
+    <rect x="196" y="386" width="212" height="20" rx="6" fill="#143F35"/>
+    <rect x="299" y="164" width="7" height="48" rx="3.5" fill="#C79A31"/>
+    <circle cx="302" cy="158" r="11" fill="#C79A31"/>
+    <path d="M302 128 l4.5 12.5 12.5 -1 -8 9.5 6 11.5 -15 -6 -15 6 6 -11.5 -8 -9.5 12.5 1 Z" fill="#C79A31" opacity="0.55"/>
+
+    <!-- jendela lengkung -->
+    <g fill="#143F35" opacity="0.82">
+      <path d="M176 512 a26 26 0 0 1 52 0 v78 h-52 Z"/>
+      <path d="M376 512 a26 26 0 0 1 52 0 v78 h-52 Z"/>
+    </g>
+    <g stroke="#FBF7EC" stroke-width="4" opacity="0.6">
+      <path d="M202 490 v100 M176 538 h52"/>
+      <path d="M402 490 v100 M376 538 h52"/>
+    </g>
+
+    <!-- pintu utama -->
+    <path d="M252 502 a50 50 0 0 1 100 0 v130 h-100 Z" fill="#143F35"/>
+    <path d="M262 506 a40 40 0 0 1 80 0 v126 h-80 Z" fill="#C79A31" opacity="0.22"/>
+    <path d="M302 466 v166" stroke="#FBF7EC" stroke-width="4" opacity="0.5"/>
+
+    <!-- anak tangga -->
+    <rect x="238" y="632" width="128" height="12" rx="4" fill="#DCE5DB"/>
+    <rect x="226" y="644" width="152" height="12" rx="4" fill="#CBD9C8"/>
+
+    <!-- siswa -->
+    <g>
+      <circle cx="168" cy="668" r="15" fill="#143F35"/>
+      <path d="M153 686 h30 v54 a15 15 0 0 1 -30 0 Z" fill="#1E5A4C"/>
+      <rect x="158" y="736" width="20" height="26" rx="6" fill="#2C4A38"/>
+    </g>
+    <g>
+      <path d="M203 662 a16 16 0 0 1 32 0 v20 h-32 Z" fill="#4A6C7A"/>
+      <path d="M201 684 h36 v58 a18 18 0 0 1 -36 0 Z" fill="#5D8494"/>
+      <rect x="209" y="738" width="20" height="24" rx="6" fill="#2C4A38"/>
+    </g>
+    <g>
+      <path d="M424 660 a16 16 0 0 1 32 0 v20 h-32 Z" fill="#8A3F2A"/>
+      <path d="M422 682 h36 v60 a18 18 0 0 1 -36 0 Z" fill="#A9492F"/>
+      <rect x="430" y="738" width="20" height="24" rx="6" fill="#2C4A38"/>
+    </g>
+
+    <!-- rumput -->
+    <g stroke="#7E9A79" stroke-width="4" stroke-linecap="round" opacity="0.7">
+      <path d="M60 748 v-18 M84 756 v-14 M508 744 v-18 M534 754 v-14 M556 742 v-16"/>
+    </g>
+  </g>
+</svg>
