@@ -9,12 +9,45 @@
 | `/akademik`  | Kurikulum, peminatan, prestasi         |
 | `/fasilitas` | Sarana belajar, ekstrakurikuler        |
 | `/berita`    | Berita & pengumuman                    |
-| `/kontak`    | Alamat, peta, formulir pesan           |
+| `/berita/{slug}` | Satu berita utuh                   |
+| `/kontak`    | Alamat, peta, formulir pesan, buku tamu |
 
 Tampilannya ada di `resources/views/publik/`, kerangka bersama (header, footer,
 navigasi) di `resources/views/layouts/publik.blade.php`. Berkas HTML statis
 aslinya diarsipkan di `resources/html-asli/` dan sudah tidak dilayani lagi ke
 publik. Gambar, CSS, dan JS tetap di `public/ma-nuruddien/`.
+
+Seluruh isi halaman ini datang dari basis data, jadi mengubah teksnya cukup
+lewat panel admin tanpa menyentuh kode.
+
+## Apa yang bisa diubah dari panel
+
+| Menu panel | Mengubah bagian |
+| ---------- | --------------- |
+| Berita & pengumuman | Halaman Berita, dan tiga terbaru di beranda |
+| Keunggulan madrasah | Tiga kartu di beranda |
+| Prestasi siswa | Daftar capaian di halaman Akademik |
+| Sarana belajar | Kartu fasilitas di halaman Fasilitas dan beranda |
+| Galeri kegiatan | Galeri di halaman Fasilitas |
+| Ekstrakurikuler | Daftar kegiatan di halaman Fasilitas |
+| Peminatan | Tiga jalur di halaman Akademik |
+| Kalender akademik | Tabel agenda tahun ajaran |
+| Jam belajar harian | Kotak jam belajar di halaman Akademik |
+| Sejarah madrasah | Linimasa di halaman Profil |
+| Misi madrasah | Daftar bernomor di halaman Profil |
+| Struktur organisasi | Bagan di halaman Profil |
+| Pengaturan situs | Nama, logo, favicon, hero, statistik, visi, kontak, media sosial |
+| Pesan masuk | Kiriman formulir kontak |
+| Buku tamu | Persetujuan pesan pengunjung |
+
+Menu daftar punya tombol panah naik dan turun untuk mengatur urutan tampil.
+
+**Logo dan favicon** diunggah lewat Pengaturan situs, tab Identitas situs.
+Kalau dikosongkan, lambang bawaan yang dipakai. Terima JPG, PNG, dan WEBP
+sampai 3 MB. Berkas SVG sengaja ditolak karena bisa memuat skrip.
+
+Foto yang diunggah masuk ke `public/unggahan/`, bukan lewat symlink, supaya
+tetap jalan saat situs dipindah ke hosting.
 
 ## Panel admin
 
@@ -47,8 +80,23 @@ Pengamanan yang sudah terpasang:
 ## Perintah yang sering dipakai
 
 ```bash
-php artisan migrate          # jalankan migrasi
-php artisan db:seed --class=AdminSeeder
-php artisan serve            # jalankan di http://127.0.0.1:8000
-php artisan test             # jalankan seluruh pengujian
+php artisan migrate                        # jalankan migrasi
+php artisan db:seed                        # akun admin + seluruh isi awal situs
+php artisan db:seed --class=AdminSeeder    # akun admin saja
+php artisan serve                          # jalankan di http://127.0.0.1:8000
+php artisan test                           # jalankan seluruh pengujian
 ```
+
+Seeder isi aman dijalankan ulang. Tabel yang sudah berisi data dilewati, jadi
+hasil kerja admin di panel tidak akan tertimpa.
+
+## Basis data
+
+Proyek ini memakai MySQL. WAMP di komputer ini menjalankan dua server sekaligus:
+PHP terhubung ke MySQL 8.3 di port 3306, sedangkan `mysql.exe` di PATH adalah
+klien MariaDB yang menunjuk server lain. Kalau perlu memeriksa isi basis data,
+pakai `php artisan tinker` supaya pasti mengenai server yang benar.
+
+Mesin penyimpanan bawaannya MyISAM, yang batas kunci indeksnya cuma 1000 byte
+sehingga kolom `unique` bertipe utf8mb4 langsung gagal dibuat. Karena itu
+`config/database.php` memaksa InnoDB.

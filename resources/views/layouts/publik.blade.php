@@ -4,20 +4,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>@yield('judul', 'MA Nuruddien, Madrasah Aliyah di Tanjung Jabung Barat, Jambi')</title>
-<meta name="description" content="@yield('deskripsi', 'Madrasah Aliyah Nuruddien Kabupaten Tanjung Jabung Barat. Kurikulum terpadu umum dan agama, guru bersertifikasi, dan pembinaan karakter untuk generasi berakhlak, cerdas, dan berprestasi.')">
+<meta name="description" content="@yield('deskripsi', pengaturan('deskripsi_situs'))">
 
 {{-- Pratinjau saat tautan dibagikan lewat WhatsApp, Facebook, dan sejenisnya --}}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MA Nuruddien">
 <meta property="og:locale" content="id_ID">
 <meta property="og:title" content="@yield('judul', 'MA Nuruddien, Madrasah Aliyah di Tanjung Jabung Barat, Jambi')">
-<meta property="og:description" content="@yield('deskripsi', 'Madrasah Aliyah Nuruddien Kabupaten Tanjung Jabung Barat. Kurikulum terpadu umum dan agama, guru bersertifikasi, dan pembinaan karakter untuk generasi berakhlak, cerdas, dan berprestasi.')">
+<meta property="og:description" content="@yield('deskripsi', pengaturan('deskripsi_situs'))">
 <meta property="og:url" content="{{ url()->current() }}">
 <meta property="og:image" content="{{ asset('ma-nuruddien/assets/gedung-madrasah-og.jpg') }}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Gedung MA Nuruddien bercat putih dan hijau dilihat dari halaman">
 <meta name="twitter:card" content="summary_large_image">
+
+{{-- Ikon tab peramban. Favicon dipakai lebih dulu, kalau belum diunggah
+     logo yang dipakai, dan kalau keduanya kosong berkas bawaan Laravel. --}}
+@php $ikonSitus = pengaturan('favicon') ?: pengaturan('logo'); @endphp
+@if ($ikonSitus)
+  <link rel="icon" href="{{ asset('unggahan/'.$ikonSitus) }}">
+  <link rel="apple-touch-icon" href="{{ asset('unggahan/'.$ikonSitus) }}">
+@else
+  <link rel="icon" href="{{ asset('favicon.ico') }}">
+@endif
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,13 +43,10 @@
 <header class="header @yield('kelas-header')">
   <div class="wrap header__isi">
     <a class="merek" href="{{ route('beranda') }}">
-      <svg class="merek__lambang" viewBox="0 0 48 48" aria-hidden="true">
-        <path d="M24 3 C34 12 39 20 39 28 v14 a3 3 0 0 1 -3 3 H12 a3 3 0 0 1 -3 -3 V28 C9 20 14 12 24 3 Z" fill="#1e5a4c"/>
-        <path d="M24 16 l2.6 7.4 7.4 -0.6 -4.8 5.7 3.6 6.8 -8.8 -3.6 -8.8 3.6 3.6 -6.8 -4.8 -5.7 7.4 0.6 Z" fill="#c79a31"/>
-      </svg>
+      <x-lambang />
       <span>
-        <span class="merek__nama">MA Nuruddien</span>
-        <span class="merek__sub">Tanjung Jabung Barat</span>
+        <span class="merek__nama">{{ pengaturan("nama_pendek") }}</span>
+        <span class="merek__sub">{{ pengaturan("wilayah") }}</span>
       </span>
     </a>
 
@@ -67,20 +74,23 @@
     <div class="footer__kisi">
       <div class="footer__merek">
         <a class="merek" href="{{ route('beranda') }}">
-          <svg class="merek__lambang" viewBox="0 0 48 48" aria-hidden="true">
-            <path d="M24 3 C34 12 39 20 39 28 v14 a3 3 0 0 1 -3 3 H12 a3 3 0 0 1 -3 -3 V28 C9 20 14 12 24 3 Z" fill="#2a6b5b"/>
-            <path d="M24 16 l2.6 7.4 7.4 -0.6 -4.8 5.7 3.6 6.8 -8.8 -3.6 -8.8 3.6 3.6 -6.8 -4.8 -5.7 7.4 0.6 Z" fill="#c79a31"/>
-          </svg>
+          <x-lambang warna="#2a6b5b" />
           <span>
-            <span class="merek__nama">MA Nuruddien</span>
-            <span class="merek__sub">Tanjung Jabung Barat</span>
+            <span class="merek__nama">{{ pengaturan("nama_pendek") }}</span>
+            <span class="merek__sub">{{ pengaturan("wilayah") }}</span>
           </span>
         </a>
-        <p>Madrasah Aliyah swasta di Kuala Tungkal, Provinsi Jambi. Membina siswa dengan ilmu umum dan ilmu agama sejak 2003.</p>
+        <p>{{ pengaturan('tentang_footer') }}</p>
         <div class="sosial">
-          <a href="#" aria-label="Facebook MA Nuruddien"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.5-1.5h1.7V4c-.3 0-1.3-.1-2.4-.1-2.4 0-4.1 1.5-4.1 4.2V10H7.5v3h2.7v8z"/></svg></a>
-          <a href="#" aria-label="Instagram MA Nuruddien"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
-          <a href="#" aria-label="YouTube MA Nuruddien"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 7.2c-.2-.9-.9-1.6-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4c-.9.2-1.6.9-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.8c.2.9.9 1.6 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8ZM10 15V9l5.2 3z"/></svg></a>
+          @if (pengaturan('facebook'))
+            <a href="{{ pengaturan('facebook') }}" aria-label="Facebook {{ pengaturan('nama_pendek') }}"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.5-1.5h1.7V4c-.3 0-1.3-.1-2.4-.1-2.4 0-4.1 1.5-4.1 4.2V10H7.5v3h2.7v8z"/></svg></a>
+          @endif
+          @if (pengaturan('instagram'))
+            <a href="{{ pengaturan('instagram') }}" aria-label="Instagram {{ pengaturan('nama_pendek') }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+          @endif
+          @if (pengaturan('youtube'))
+            <a href="{{ pengaturan('youtube') }}" aria-label="YouTube {{ pengaturan('nama_pendek') }}"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 7.2c-.2-.9-.9-1.6-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4c-.9.2-1.6.9-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.8c.2.9.9 1.6 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8ZM10 15V9l5.2 3z"/></svg></a>
+          @endif
         </div>
       </div>
 
@@ -110,15 +120,15 @@
       <div>
         <h4>Alamat</h4>
         <ul>
-          <li>Jl. Pendidikan No. 12, Kuala Tungkal<br>Kabupaten Tanjung Jabung Barat<br>Provinsi Jambi 36513</li>
-          <li><a href="tel:+62741000000">(0742) 000 000</a></li>
-          <li><a href="mailto:info@manuruddien.sch.id">info&#64;manuruddien.sch.id</a></li>
+          <li>{!! nl2br(e(pengaturan('alamat'))) !!}</li>
+          <li><a href="tel:{{ preg_replace('~\D~', '', pengaturan('telepon')) }}">{{ pengaturan('telepon') }}</a></li>
+          <li><a href="mailto:{{ pengaturan('email') }}">{{ pengaturan('email') }}</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer__bawah">
-      <span>&copy; <span data-tahun>{{ date('Y') }}</span> Madrasah Aliyah Nuruddien, Tanjung Jabung Barat, Jambi.</span>
+      <span>&copy; <span data-tahun>{{ date('Y') }}</span> {{ pengaturan('nama_madrasah') }}, {{ pengaturan('wilayah') }}, Jambi.</span>
       <span>Dirancang sebagai media promosi digital madrasah.</span>
     </div>
   </div>

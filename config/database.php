@@ -56,7 +56,10 @@ return [
             'prefix' => '',
             'prefix_indexes' => true,
             'strict' => true,
-            'engine' => null,
+            // Mesin bawaan di WAMP ini MyISAM, yang batas kunci indeksnya cuma
+            // 1000 byte sehingga kolom utf8mb4 yang diberi unique langsung gagal.
+            // InnoDB juga yang mendukung transaksi dan kunci asing.
+            'engine' => env('DB_ENGINE', 'InnoDB'),
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],

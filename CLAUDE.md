@@ -1,8 +1,15 @@
 # Aturan kerja proyek MA Nuruddien
 
 Website profil Madrasah Aliyah Nuruddien, Kuala Tungkal, Tanjung Jabung Barat.
-Laravel 12, Blade, SQLite. Baca juga PANDUAN.md untuk daftar URL dan cara
+Laravel 12, Blade, MySQL. Baca juga PANDUAN.md untuk daftar URL dan cara
 membuat akun admin.
+
+Catatan lingkungan: WAMP di komputer ini menjalankan dua server basis data.
+PHP terhubung ke MySQL 8.3 di port 3306, sedangkan berkas `mysql.exe` yang
+ada di PATH adalah klien MariaDB yang menunjuk server lain. Kerjakan urusan
+basis data lewat `php artisan`, jangan lewat klien baris perintah, supaya
+tidak salah server. Mesin bawaannya MyISAM, jadi `config/database.php` sudah
+dipaksa memakai InnoDB agar indeks utf8mb4 tidak melebihi batas kunci.
 
 ## 1. Ruang lingkup: CMS saja
 
@@ -56,7 +63,44 @@ Yang dipakai:
 Isi halaman madrasah ditulis tenang dan sederhana, tidak seperti iklan.
 Contoh nada yang sudah ada di beranda dan profil bisa jadi acuan.
 
-## 3. Konvensi kode
+## 3. Cara CMS ini bekerja
+
+Isi situs disimpan di basis data, bukan ditulis di berkas tampilan. Ada dua
+bentuk penyimpanan, dan memilih yang tepat menentukan cara menambah fitur:
+
+**Teks tunggal** masuk ke tabel `pengaturan`, berupa pasangan kunci dan nilai.
+Contohnya judul hero, visi, alamat, angka statistik, logo, dan favicon.
+Menambah satu kolom teks baru cukup dengan menambah entri di
+`PengaturanSeeder`, tanpa migrasi. Di tampilan dipanggil dengan
+`pengaturan('kunci')`. Jenis kolom yang tersedia: `teks`, `panjang`, `angka`,
+dan `gambar`.
+
+**Daftar berisi banyak baris** punya tabel sendiri, misalnya `berita`,
+`prestasi`, `fasilitas`, `galeri`, dan `keunggulan`. Semuanya diturunkan dari
+`KontenDasar` dan punya kolom `urutan`.
+
+Pengelolaannya di panel memakai `KontenController`, satu induk berbasis skema.
+Menambah jenis konten baru cukup empat langkah:
+
+1. Migrasi dan model yang mewarisi `App\Models\KontenDasar`
+2. Controller pendek yang mewarisi `KontenController` dan mengumumkan
+   `medan()`, yaitu daftar kolom beserta jenis dan aturan validasinya
+3. Satu baris di array `$konten` pada `routes/web.php`
+4. Satu baris di array `$menu` pada `resources/views/layouts/panel.blade.php`
+
+Tampilan daftar dan borangnya sudah disediakan `panel/konten/indeks.blade.php`
+dan `panel/konten/borang.blade.php`, jadi tidak perlu membuat Blade baru.
+Jangan menyalin ulang alur CRUD untuk jenis konten baru.
+
+Ikon diambil dari `config/ikon.php` dan digambar lewat `<x-ikon nama="..." />`.
+Menambah ikon cukup menambah satu entri di berkas itu, dan pilihannya otomatis
+muncul di panel.
+
+Helper tampilan ada di `app/Support/bantuan.php`: `pengaturan()`, `sorotan()`
+untuk kata yang diapit tanda bintang di judul hero, dan `paragraf()` untuk
+mengubah teks biasa jadi beberapa paragraf secara aman.
+
+## 4. Konvensi kode
 
 Penamaan dalam bahasa Indonesia, mengikuti yang sudah ada:
 
@@ -124,7 +168,7 @@ Hal teknis yang perlu diingat:
   `/panel/masuk` sengaja hanya diketik manual.
 - Kredensial tidak pernah ditulis di kode atau di file yang ikut repositori.
 
-## 4. Menjalankan pengujian
+## 5. Menjalankan pengujian
 
 Jangan menjalankan `php artisan test` sebagai kebiasaan setiap kali selesai
 mengubah kode. Selesaikan pekerjaannya, laporkan apa yang diubah, selesai.

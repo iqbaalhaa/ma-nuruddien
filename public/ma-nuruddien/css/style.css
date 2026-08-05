@@ -722,3 +722,24 @@ table.data tbody tr:hover { background: #fafcf9; }
   .lengkung { border-radius: 160px 160px 14px 14px; }
   .kutipan__foto { border-radius: 140px 140px 14px 14px; }
 }
+
+/* ---------- 18. Halaman baca berita ---------- */
+.naskah { max-width: 74ch; }
+.naskah > p { margin: 0 0 1.15em; }
+.naskah .utama { font-weight: 500; margin-bottom: 1.4em; }
+.naskah__gambar { margin: 0 0 34px; }
+.naskah__gambar img {
+  width: 100%; border-radius: var(--sudut);
+  border: 1px solid var(--garis); box-shadow: var(--bayang);
+}
+
+.kosong-berita {
+  padding: 44px 20px; text-align: center; color: var(--abu);
+  border: 1px dashed var(--garis); border-radius: var(--sudut); margin-top: 24px;
+}
+
+/* Foto asli menggantikan ikon di kartu berita, fasilitas, dan galeri. */
+.berita__gambar img, .lengkung__gambar img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+}

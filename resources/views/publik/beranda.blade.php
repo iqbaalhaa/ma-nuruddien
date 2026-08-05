@@ -11,13 +11,9 @@
   <section class="hero">
     <div class="wrap hero__isi">
       <div class="hero__teks">
-        <span class="mata mata--terang">Madrasah Aliyah Swasta · Jambi</span>
-        <h1 class="hero__jargon">Membentuk generasi <em>berakhlak</em>, cerdas, dan berprestasi.</h1>
-        <p class="utama">
-          MA Nuruddien memadukan ilmu umum dan ilmu agama dalam satu ruang belajar di
-          Kabupaten Tanjung Jabung Barat. Kami membina siswa agar siap melanjutkan ke
-          perguruan tinggi tanpa kehilangan akar keislamannya.
-        </p>
+        <span class="mata mata--terang">{{ pengaturan('hero_mata') }}</span>
+        <h1 class="hero__jargon">{!! sorotan(pengaturan('hero_judul')) !!}</h1>
+        <p class="utama">{{ pengaturan('hero_teks') }}</p>
         <div class="hero__aksi">
           <a class="tbl tbl--emas" href="{{ route('profil') }}">
             Kenali madrasah kami
@@ -27,9 +23,11 @@
         </div>
         <p class="hero__catatan">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-          Kuala Tungkal, Kabupaten Tanjung Jabung Barat
-          <span class="hero__pemisah" aria-hidden="true"></span>
-          Terakreditasi B
+          {{ pengaturan('peta') }}
+          @if (pengaturan('hero_catatan'))
+            <span class="hero__pemisah" aria-hidden="true"></span>
+            {{ pengaturan('hero_catatan') }}
+          @endif
         </p>
       </div>
     </div>
@@ -39,35 +37,19 @@
   <section class="bagian bagian--sage">
     <div class="wrap">
       <div class="kepala-bagian kepala-bagian--tengah muncul">
-        <span class="mata">Kenapa MA Nuruddien</span>
-        <h2>Tiga hal yang kami jaga setiap hari</h2>
-        <p class="utama">Kebiasaan yang kami jalankan konsisten sejak kelas X sampai kelas XII.</p>
+        <span class="mata">Kenapa {{ pengaturan('nama_pendek') }}</span>
+        <h2>{{ pengaturan('beranda_keunggulan_judul') }}</h2>
+        <p class="utama">{{ pengaturan('beranda_keunggulan_teks') }}</p>
       </div>
 
       <div class="kisi kisi--3">
-        <article class="kartu muncul">
-          <div class="kartu__ikon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M8 7h8M8 11h6"/></svg>
-          </div>
-          <h3>Kurikulum terpadu</h3>
-          <p>Mata pelajaran umum berjalan beriringan dengan tafsir, hadis, fikih, dan bahasa Arab. Siswa tidak perlu memilih salah satu.</p>
-        </article>
-
-        <article class="kartu muncul">
-          <div class="kartu__ikon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 14 7 22l5-2.5L17 22l-1.5-8"/></svg>
-          </div>
-          <h3>Prestasi yang terukur</h3>
-          <p>Siswa kami rutin mewakili madrasah di MTQ, olimpiade sains madrasah, dan lomba kepramukaan tingkat kabupaten.</p>
-        </article>
-
-        <article class="kartu muncul">
-          <div class="kartu__ikon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 20v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="3.5"/><path d="M17 11.5 19 13.5 23 9.5"/></svg>
-          </div>
-          <h3>Guru bersertifikasi</h3>
-          <p>Mayoritas guru berlatar S1 kependidikan dan telah lulus sertifikasi, dengan pembinaan wali kelas untuk setiap rombongan belajar.</p>
-        </article>
+        @foreach ($keunggulan as $k)
+          <article class="kartu muncul">
+            <div class="kartu__ikon"><x-ikon :nama="$k->ikon" /></div>
+            <h3>{{ $k->judul }}</h3>
+            <p>{{ $k->keterangan }}</p>
+          </article>
+        @endforeach
       </div>
     </div>
   </section>
@@ -75,22 +57,18 @@
   <!-- ================= STATISTIK ================= -->
   <section class="bagian--gelap" aria-label="Madrasah dalam angka">
     <div class="statistik">
-      <div class="statistik__sel">
-        <span class="statistik__angka" data-hitung="324" data-akhiran="">324</span>
-        <span class="statistik__label">Siswa aktif</span>
-      </div>
-      <div class="statistik__sel">
-        <span class="statistik__angka" data-hitung="28" data-akhiran="">28</span>
-        <span class="statistik__label">Guru &amp; staf</span>
-      </div>
-      <div class="statistik__sel">
-        <span class="statistik__angka" data-hitung="8" data-akhiran="">8</span>
-        <span class="statistik__label">Ekstrakurikuler</span>
-      </div>
-      <div class="statistik__sel">
-        <span class="statistik__angka" data-hitung="23" data-akhiran="">23</span>
-        <span class="statistik__label">Tahun mengabdi</span>
-      </div>
+      @foreach ([
+          'statistik_siswa' => 'Siswa aktif',
+          'statistik_guru' => 'Guru & staf',
+          'statistik_ekskul' => 'Ekstrakurikuler',
+          'statistik_tahun' => 'Tahun mengabdi',
+      ] as $kunci => $label)
+        @php $angka = (int) pengaturan($kunci, '0'); @endphp
+        <div class="statistik__sel">
+          <span class="statistik__angka" data-hitung="{{ $angka }}" data-akhiran="">{{ $angka }}</span>
+          <span class="statistik__label">{{ $label }}</span>
+        </div>
+      @endforeach
     </div>
   </section>
 
@@ -99,30 +77,21 @@
     <div class="wrap duo">
       <div class="muncul">
         <span class="mata">Sekilas madrasah</span>
-        <h2>Madrasah kecil di tepi Tungkal yang terus berbenah</h2>
-        <p class="utama">
-          Madrasah Aliyah Nuruddien berdiri untuk menjawab kebutuhan warga sekitar akan sekolah
-          menengah atas yang tetap menomorsatukan pendidikan agama. Sejak angkatan pertama,
-          madrasah tumbuh pelan tapi tidak pernah berhenti: menambah ruang kelas, membuka
-          laboratorium, dan memperluas kegiatan siswa.
-        </p>
-        <p>
-          Hari ini MA Nuruddien menampung ratusan siswa dari beberapa kecamatan di Tanjung Jabung
-          Barat. Sebagian melanjutkan ke perguruan tinggi keagamaan, sebagian ke jalur umum,
-          dan sebagian lagi kembali membangun kampung halamannya.
-        </p>
+        <h2>{{ pengaturan('beranda_sekilas_judul') }}</h2>
+        <p class="utama">{{ pengaturan('beranda_sekilas_1') }}</p>
+        <p>{{ pengaturan('beranda_sekilas_2') }}</p>
         <a class="tautan-panah" href="{{ route('profil') }}">Baca profil lengkap <span aria-hidden="true">&rarr;</span></a>
       </div>
 
       <aside class="kotak-info muncul">
         <h3>Identitas madrasah</h3>
         <ul>
-          <li><strong>Nama:</strong> Madrasah Aliyah Nuruddien</li>
-          <li><strong>Jenjang:</strong> Menengah atas (setara SMA)</li>
-          <li><strong>Status:</strong> Swasta, di bawah naungan Kementerian Agama</li>
-          <li><strong>Akreditasi:</strong> B</li>
-          <li><strong>Peminatan:</strong> MIA, IIS, dan Keagamaan</li>
-          <li><strong>Lokasi:</strong> Kuala Tungkal, Kabupaten Tanjung Jabung Barat, Jambi</li>
+          <li><strong>Nama:</strong> {{ pengaturan('nama_madrasah') }}</li>
+          <li><strong>Jenjang:</strong> {{ pengaturan('identitas_jenjang') }}</li>
+          <li><strong>Status:</strong> {{ pengaturan('identitas_status') }}</li>
+          <li><strong>Akreditasi:</strong> {{ pengaturan('identitas_akreditasi') }}</li>
+          <li><strong>Peminatan:</strong> {{ \App\Models\Peminatan::urut()->pluck('kode')->join(', ', ', dan ') }}</li>
+          <li><strong>Lokasi:</strong> {{ pengaturan('peta') }}</li>
         </ul>
       </aside>
     </div>
@@ -138,12 +107,11 @@
         <div>
           <svg class="bintang" viewBox="0 0 44 44" aria-hidden="true" style="margin:0 0 18px"><rect x="9" y="9" width="26" height="26"/><rect x="9" y="9" width="26" height="26" transform="rotate(45 22 22)"/></svg>
           <blockquote>
-            &ldquo;Tugas kami menemani anak-anak sampai mereka paham kenapa mereka
-            perlu belajar. Prestasi biasanya menyusul setelah itu.&rdquo;
+            &ldquo;{{ pengaturan('kepala_kutipan_beranda') }}&rdquo;
           </blockquote>
           <figcaption>
-            <strong>H. Ahmad Syafi&rsquo;i, S.Pd.I., M.Pd.</strong>
-            Kepala Madrasah Aliyah Nuruddien
+            <strong>{{ pengaturan('kepala_nama') }}</strong>
+            Kepala {{ pengaturan('nama_madrasah') }}
           </figcaption>
         </div>
       </figure>
@@ -162,44 +130,26 @@
       </div>
 
       <div class="berita">
-        <article class="berita__item muncul">
-          <div class="berita__gambar">
-            <span class="berita__label">Kegiatan</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l9-4 9 4-9 4z"/><path d="M7 10.5V15c0 1.7 2.2 3 5 3s5-1.3 5-3v-4.5"/><path d="M21 8v6"/></svg>
-          </div>
-          <div class="berita__teks">
-            <span class="berita__tanggal">15 Mei 2026</span>
-            <h3><a href="{{ route('berita') }}">Pesantren kilat Ramadan diikuti seluruh siswa kelas X dan XI</a></h3>
-            <p>Selama sepuluh hari, siswa mengikuti kajian pagi, tadarus, dan praktik ibadah yang dibimbing langsung oleh guru rumpun agama.</p>
-            <a class="tautan-panah" href="{{ route('berita') }}">Baca selengkapnya <span aria-hidden="true">&rarr;</span></a>
-          </div>
-        </article>
-
-        <article class="berita__item muncul">
-          <div class="berita__gambar berita__gambar--emas">
-            <span class="berita__label">Prestasi</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 14 7 22l5-2.5L17 22l-1.5-8"/></svg>
-          </div>
-          <div class="berita__teks">
-            <span class="berita__tanggal">28 April 2026</span>
-            <h3><a href="{{ route('berita') }}">Tim tahfiz meraih juara dua MTQ tingkat kabupaten</a></h3>
-            <p>Dua siswa kelas XI mewakili madrasah pada cabang tilawah dan hifzil Qur&rsquo;an lima juz di Kuala Tungkal.</p>
-            <a class="tautan-panah" href="{{ route('berita') }}">Baca selengkapnya <span aria-hidden="true">&rarr;</span></a>
-          </div>
-        </article>
-
-        <article class="berita__item muncul">
-          <div class="berita__gambar berita__gambar--tanah">
-            <span class="berita__label">Pengumuman</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
-          </div>
-          <div class="berita__teks">
-            <span class="berita__tanggal">10 April 2026</span>
-            <h3><a href="{{ route('berita') }}">Jadwal ujian akhir semester genap tahun ajaran 2025/2026</a></h3>
-            <p>Ujian berlangsung dua pekan. Kartu ujian dibagikan wali kelas paling lambat tiga hari sebelum pelaksanaan.</p>
-            <a class="tautan-panah" href="{{ route('berita') }}">Baca selengkapnya <span aria-hidden="true">&rarr;</span></a>
-          </div>
-        </article>
+        @forelse ($berita as $b)
+          <article class="berita__item muncul">
+            <div class="berita__gambar berita__gambar--{{ $b->warna }}">
+              <span class="berita__label">{{ $b->namaKategori() }}</span>
+              @if ($b->gambar)
+                <img src="{{ asset('unggahan/'.$b->gambar) }}" alt="{{ $b->judul }}" loading="lazy">
+              @else
+                <x-ikon :nama="$b->ikon" tebal="1.5" />
+              @endif
+            </div>
+            <div class="berita__teks">
+              <span class="berita__tanggal">{{ $b->tanggal->translatedFormat('j F Y') }}</span>
+              <h3><a href="{{ route('berita.baca', $b) }}">{{ $b->judul }}</a></h3>
+              <p>{{ $b->ringkasan }}</p>
+              <a class="tautan-panah" href="{{ route('berita.baca', $b) }}">Baca selengkapnya <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </article>
+        @empty
+          <p class="abu">Belum ada berita yang diterbitkan.</p>
+        @endforelse
       </div>
     </div>
   </section>
@@ -214,35 +164,19 @@
       </div>
 
       <div class="kisi kisi--4">
-        <div class="lengkung muncul" style="cursor:default">
-          <div class="lengkung__gambar lengkung__gambar--pucuk">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M7 20h10M9 16v4M15 16v4"/></svg>
+        @foreach ($fasilitas as $fs)
+          <div class="lengkung muncul" style="cursor:default">
+            <div class="lengkung__gambar lengkung__gambar--{{ $fs->warna }}">
+              @if ($fs->gambar)
+                <img src="{{ asset('unggahan/'.$fs->gambar) }}" alt="{{ $fs->nama }}" loading="lazy">
+              @else
+                <x-ikon :nama="$fs->ikon" tebal="1.5" />
+              @endif
+            </div>
+            <div class="lengkung__teks"><h3>{{ $fs->nama }}</h3><p>{{ $fs->ringkas }}</p></div>
           </div>
-          <div class="lengkung__teks"><h3>Ruang kelas</h3><p>12 rombongan belajar</p></div>
-        </div>
-
-        <div class="lengkung muncul" style="cursor:default">
-          <div class="lengkung__gambar lengkung__gambar--emas">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v6.5L5 19a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 19l-5-9.5V3"/><path d="M7.5 15h9"/></svg>
-          </div>
-          <div class="lengkung__teks"><h3>Laboratorium IPA</h3><p>Praktik fisika, kimia, biologi</p></div>
-        </div>
-
-        <div class="lengkung muncul" style="cursor:default">
-          <div class="lengkung__gambar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h5v18H6a2 2 0 0 0-2 2z"/><path d="M20 5a2 2 0 0 0-2-2h-5v18h5a2 2 0 0 1 2 2z"/></svg>
-          </div>
-          <div class="lengkung__teks"><h3>Perpustakaan</h3><p>Koleksi umum &amp; keagamaan</p></div>
-        </div>
-
-        <div class="lengkung muncul" style="cursor:default">
-          <div class="lengkung__gambar lengkung__gambar--tanah">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2c3.5 3.2 5 5.9 5 8.5V19H7v-8.5C7 7.9 8.5 5.2 12 2Z"/><path d="M4 22h16M12 10.5v8.5"/></svg>
-          </div>
-          <div class="lengkung__teks"><h3>Musala</h3><p>Salat berjamaah &amp; kajian</p></div>
-        </div>
+        @endforeach
       </div>
-
       <p style="margin-top:34px"><a class="tautan-panah" href="{{ route('fasilitas') }}">Lihat seluruh fasilitas <span aria-hidden="true">&rarr;</span></a></p>
     </div>
   </section>
