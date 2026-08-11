@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Masuk Panel - MA Nuruddien</title>
+<title>Masuk Panel - {{ pengaturan('nama_pendek', 'MA Nuruddien') }}</title>
+@php $ikonSitus = pengaturan('favicon') ?: pengaturan('logo'); @endphp
+<link rel="icon" href="{{ $ikonSitus ? asset('unggahan/'.$ikonSitus) : asset('favicon.ico') }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -15,12 +17,9 @@
 <main class="masuk">
   <div class="masuk__kartu">
     <div class="masuk__merek">
-      <svg viewBox="0 0 48 48" aria-hidden="true">
-        <path d="M24 3 C34 12 39 20 39 28 v14 a3 3 0 0 1 -3 3 H12 a3 3 0 0 1 -3 -3 V28 C9 20 14 12 24 3 Z" fill="#1e5a4c"/>
-        <path d="M24 16 l2.6 7.4 7.4 -0.6 -4.8 5.7 3.6 6.8 -8.8 -3.6 -8.8 3.6 3.6 -6.8 -4.8 -5.7 7.4 0.6 Z" fill="#c79a31"/>
-      </svg>
+      <x-lambang kelas="masuk__logo" />
       <span>
-        <span class="masuk__nama">MA Nuruddien</span>
+        <span class="masuk__nama">{{ pengaturan('nama_pendek', 'MA Nuruddien') }}</span>
         <span class="masuk__sub">Panel Admin</span>
       </span>
     </div>

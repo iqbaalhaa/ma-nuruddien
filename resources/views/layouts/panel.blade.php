@@ -22,10 +22,13 @@
       <span></span>
     </button>
 
-    <div class="panel-atas__merek">
-      MA Nuruddien
-      <span>Panel Admin</span>
-    </div>
+    <a class="panel-atas__merek" href="{{ route('panel.dasbor') }}">
+      <x-lambang kelas="panel-atas__logo" warna="#ffffff" />
+      <span>
+        {{ pengaturan('nama_pendek', 'MA Nuruddien') }}
+        <span>Panel Admin</span>
+      </span>
+    </a>
 
     <div class="panel-atas__aksi">
       <a href="{{ route('beranda') }}" target="_blank" rel="noopener">Lihat situs</a>
@@ -66,6 +69,7 @@
             ],
             'Pengaturan' => [
                 ['panel.pengaturan.indeks', 'Pengaturan situs', 'komputer', null],
+                ['panel.akun.indeks', 'Akun saya', 'orang', null],
             ],
         ];
     @endphp

@@ -85,6 +85,13 @@ Route::prefix('panel')->group(function () {
         Route::get('/pengaturan/{grup?}', [Panel\PengaturanController::class, 'indeks'])->name('pengaturan.indeks');
         Route::put('/pengaturan/{grup}', [Panel\PengaturanController::class, 'simpan'])->name('pengaturan.simpan');
 
+        // ---- Akun sendiri ----
+        Route::controller(Panel\AkunController::class)->prefix('akun')->name('akun.')->group(function () {
+            Route::get('/', 'indeks')->name('indeks');
+            Route::put('/', 'perbarui')->name('perbarui');
+            Route::put('/sandi', 'gantiSandi')->name('sandi');
+        });
+
         // ---- Kiriman pengunjung ----
         Route::controller(Panel\PesanController::class)->group(function () {
             Route::get('/pesan', 'indeks')->name('pesan.indeks');

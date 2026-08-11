@@ -62,7 +62,8 @@ svg { display: block; max-width: 100%; }
 }
 
 .masuk__merek { display: flex; align-items: center; gap: 12px; margin-bottom: 26px; }
-.masuk__merek svg { width: 42px; height: 42px; flex: none; }
+/* Berlaku untuk lambang bawaan (SVG) maupun logo unggahan (IMG). */
+.masuk__logo { width: 46px; height: 46px; flex: none; object-fit: contain; }
 .masuk__nama { font-family: "Fraunces", Georgia, serif; font-weight: 700; font-size: 1.12rem; display: block; line-height: 1.25; }
 .masuk__sub { font-size: .78rem; letter-spacing: .09em; text-transform: uppercase; color: var(--abu); }
 
@@ -157,8 +158,16 @@ svg { display: block; max-width: 100%; }
   max-width: 1440px; margin-inline: auto; padding-inline: 22px;
 }
 .panel-atas__nama { color: rgba(255, 255, 255, .78); }
-.panel-atas__merek { font-family: "Fraunces", Georgia, serif; font-weight: 700; font-size: 1.05rem; }
-.panel-atas__merek span { display: block; font-family: inherit; font-size: .74rem; letter-spacing: .09em; text-transform: uppercase; color: rgba(255,255,255,.62); font-weight: 400; }
+.panel-atas__merek {
+  display: flex; align-items: center; gap: 11px;
+  font-family: "Fraunces", Georgia, serif; font-weight: 700; font-size: 1.05rem;
+  color: #fff; text-decoration: none;
+}
+.panel-atas__merek span span {
+  display: block; font-family: inherit; font-size: .74rem; letter-spacing: .09em;
+  text-transform: uppercase; color: rgba(255,255,255,.62); font-weight: 400;
+}
+.panel-atas__logo { width: 34px; height: 34px; flex: none; object-fit: contain; }
 .panel-atas__aksi { display: flex; align-items: center; gap: 16px; font-size: .92rem; }
 
 .tbl-keluar {
@@ -178,7 +187,7 @@ svg { display: block; max-width: 100%; }
 
 .panel-rangka {
   display: grid;
-  grid-template-columns: 262px minmax(0, 1fr);
+  grid-template-columns: 284px minmax(0, 1fr);
   align-items: start;
   max-width: 1440px;
   margin-inline: auto;
@@ -189,6 +198,11 @@ svg { display: block; max-width: 100%; }
   top: calc(var(--tinggi-atas, 70px));
   max-height: calc(100vh - var(--tinggi-atas, 70px));
   overflow-y: auto;
+  /* Ruang batang gulir dipesan sejak awal. Tanpa ini, begitu menunya cukup
+     panjang untuk digulir, batang gulir memakan lebar dan label panjang
+     seperti "Berita & pengumuman" terbelah dua baris. */
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
   padding: 26px 14px 40px 22px;
   border-right: 1px solid var(--garis);
   background: var(--kertas);

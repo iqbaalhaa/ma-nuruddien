@@ -37,6 +37,7 @@ lewat panel admin tanpa menyentuh kode.
 | Misi madrasah | Daftar bernomor di halaman Profil |
 | Struktur organisasi | Bagan di halaman Profil |
 | Pengaturan situs | Nama, logo, favicon, hero, statistik, visi, kontak, media sosial |
+| Akun saya | Nama, email, dan kata sandi untuk masuk |
 | Pesan masuk | Kiriman formulir kontak |
 | Buku tamu | Persetujuan pesan pengunjung |
 
@@ -57,15 +58,31 @@ Halaman publik sengaja **tidak memuat tautan atau tombol apa pun** ke panel, dan
 halaman panel ditandai `noindex, nofollow` serta diblokir lewat `robots.txt`.
 Satu-satunya cara masuk adalah mengetik URL di atas.
 
-Tidak ada registrasi. Akun dibuat lewat seeder:
+Tidak ada registrasi. Akun pertama dibuat lewat seeder:
 
 ```bash
 php artisan db:seed --class=AdminSeeder
 ```
 
-Seeder membaca `ADMIN_NAMA`, `ADMIN_EMAIL`, dan `ADMIN_PASSWORD` dari `.env`.
-Untuk mengganti kata sandi, ubah `ADMIN_PASSWORD` di `.env` lalu jalankan ulang
-perintah di atas (seeder memakai `updateOrCreate`, jadi akun tidak terduplikasi).
+Seeder membaca `ADMIN_NAMA`, `ADMIN_EMAIL`, dan `ADMIN_PASSWORD` dari `.env`,
+tetapi kata sandi hanya ditulis saat akunnya belum ada. Kalau akunnya sudah
+ada, kata sandinya tidak disentuh, jadi menjalankan seeder ulang tidak akan
+mengembalikan kata sandi yang sudah Anda ganti.
+
+**Mengganti kata sandi sehari-hari lewat panel**, bukan lewat `.env`: masuk,
+lalu buka menu **Akun saya**. Di sana juga bisa mengubah nama dan email.
+Kata sandi baru paling sedikit 8 karakter dan harus memuat huruf serta angka.
+
+Tidak ada pemulihan kata sandi lewat email. Kalau kata sandi hilang, satu-satunya
+jalan adalah menyetelnya ulang dari server:
+
+```bash
+php artisan tinker --execute="App\Models\User::where('email','admin@sekolah.com')->first()->update(['password' => Hash::make('SandiBaru123')]);"
+```
+
+Kalau email di panel diubah, sesuaikan juga `ADMIN_EMAIL` di `.env`. Kalau
+tidak, seeder akan mengira akunnya belum ada lalu membuat admin kedua. Seeder
+memperingatkan hal ini setiap kali dijalankan.
 
 > **Penting:** ganti `ADMIN_PASSWORD` bawaan di `.env` sebelum situs dipakai
 > sungguhan, dan pastikan `.env` tidak pernah ikut diunggah ke repositori.
