@@ -22,6 +22,11 @@
         <env name="APP_MAINTENANCE_DRIVER" value="file"/>
         <env name="BCRYPT_ROUNDS" value="4"/>
         <env name="CACHE_STORE" value="array"/>
+        <!-- Basis data aplikasi memakai MySQL, lihat .env. Khusus pengujian
+             dipakai SQLite di memori karena jauh lebih cepat dan tidak
+             bergantung pada server, jadi tes tetap jalan saat MySQL di WAMP
+             sedang mati. Konsekuensinya perilaku khas MySQL, misalnya batas
+             panjang indeks dan mesin InnoDB, tidak ikut teruji di sini. -->
         <env name="DB_CONNECTION" value="sqlite"/>
         <env name="DB_DATABASE" value=":memory:"/>
         <env name="MAIL_MAILER" value="array"/>

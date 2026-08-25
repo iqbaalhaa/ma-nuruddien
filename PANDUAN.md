@@ -109,7 +109,29 @@ hasil kerja admin di panel tidak akan tertimpa.
 
 ## Basis data
 
-Proyek ini memakai MySQL. WAMP di komputer ini menjalankan dua server sekaligus:
+Proyek ini memakai MySQL. SQLite tidak dipakai lagi.
+
+### Menyiapkan dari nol
+
+```bash
+cp .env.example .env
+php artisan key:generate
+# buat basis datanya dulu, misalnya lewat phpMyAdmin, dengan nama
+# ma_nuruddien dan set karakter utf8mb4_unicode_ci
+php artisan migrate
+php artisan db:seed
+```
+
+Laravel tidak membuat basis datanya sendiri, jadi langkah pembuatan di
+atas wajib dilakukan lebih dulu. Kalau belum ada, `migrate` akan berhenti
+dengan pesan `Unknown database`.
+
+Pastikan juga layanan MySQL di WAMP sudah menyala. Kalau mati, semua
+halaman menampilkan galat `No connection could be made`.
+
+### Catatan lingkungan
+
+WAMP di komputer ini menjalankan dua server basis data sekaligus:
 PHP terhubung ke MySQL 8.3 di port 3306, sedangkan `mysql.exe` di PATH adalah
 klien MariaDB yang menunjuk server lain. Kalau perlu memeriksa isi basis data,
 pakai `php artisan tinker` supaya pasti mengenai server yang benar.
